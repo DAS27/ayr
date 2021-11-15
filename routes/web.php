@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'movies'], function() {
+    Route::get('/', [MovieController::class, 'index']);
 });
